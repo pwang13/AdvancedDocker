@@ -1,0 +1,27 @@
+#!/bin/bash
+
+GIT_WORK_TREE=//home/pwang/DevOps/Workshop/AdvancedDocker/Deploy/repo/blue-www/ git checkout -f
+
+echo "---------Building docker image---------"
+docker build -t ncsu-app ../blue-www/
+
+echo "---------Pushing to repo---------" 
+docker tag ncsu-app localhost:5000/ncsu:latest
+docker push localhost:5000/ncsu:latest
+
+echo "---------Removing existing docker image---------" 
+docker stop app 
+docker rm app
+echo "---------Removing existing docker image from registry ---------"
+docker rmi localhost:5000/ncsu:current
+
+
+echo "---------Pulling from repo---------" 
+docker pull localhost:5000/ncsu:latest  
+
+  
+
+echo "---------Tagging the built docker image to the registry---------"
+docker tag localhost:5000/ncsu:latest localhost:5000/ncsu:current
+echo "---------Pushing the tagged docker image to the registry---------"
+docker run -p 50100:8080 -d --name app localhost:5000/ncsu:latest 	
