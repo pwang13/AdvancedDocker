@@ -1,0 +1,12 @@
+proxy:
+    build: ./proxy
+    links:
+        - redis
+
+node:
+    build: ./node
+    links:
+        - redis
+
+redis:
+    image: redis
