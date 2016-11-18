@@ -1,6 +1,7 @@
 # HW4 - Docker Part Deux
 
-In this homework assignment, you'll get to practice advanced features related to docker containers.
+## Screen Cast
+[Screencast](https://www.youtube.com/watch?v=64-qQyt4LSA&feature=youtu.be)
 
 1) **Docker Compose (50 points)**: You are ready to launch your cat photo startup company. Use docker compose to setup your HW3 app in the following way:
 
