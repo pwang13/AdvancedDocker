@@ -15,5 +15,5 @@ var server = app.listen(PORT, function () {
 	var host = server.address().address
 	var port = server.address().port
 
-	console.log('Example b listening at http://%s:%s', host, port)
+	console.log('Example c listening at http://%s:%s', host, port)
 });
